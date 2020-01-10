@@ -1,2 +1,2 @@
 # weather-dash
-Homework 5- Weather Dashboard
+Homework 6- Weather Dashboard
