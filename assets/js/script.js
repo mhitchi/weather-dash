@@ -56,6 +56,12 @@ $(document).ready(function(){
           $('#current').append(currentDate);
 
           // show current icon, temp, humidity, wind speed
+          // TODO can't get icon
+          var currentIcon = $('<img>');
+          var currentIconURL = "http://openweathermap.org/img/w/" + (response.weather[0].icon) + ".png";
+          currentIcon.attr('src', currentIconURL);
+          $('#current').append(currentIcon);
+
           var currentTemp = $('<p>');
           currentTemp.text((response.main.temp) + ' degrees Farenheit');
           $('#current').append(currentTemp);
