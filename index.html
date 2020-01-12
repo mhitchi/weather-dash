@@ -7,13 +7,50 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- link bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- link fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <input id="city" type="text">
-    <button id="getWeather">Search</button>
-    <div id="showWeather"></div>
-    
+    <!-- jumbotron with img? -->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4">
+          <!-- search field -->
+          <!-- <input id="city" type="text">
+          <button id="getWeather">Search</button> -->
+          <!-- Search form -->
+          <form class="form-inline active-cyan-4">
+            <input id="city" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Enter a city"
+              aria-label="Search">
+              <!-- TODO show icon -->
+            <button id="getWeather" class="fas fa-search" aria-hidden="true"></button>
+          </form>
+        </div>
+        <div class="col-xs-8">
+          <!-- weather -->
+          <div id="showWeather">
+            <!-- current -->
+            <div id="current">
+              <!-- <h1 id="currentCity"></h1>
+              <h2 id="currentDate"></h2>
+              <i id="currentIcon"></i>
+              <p id="currentTemp"></p>
+              <p id="currentHumidity"></p>
+              <p id="currentWind"></p>
+              <p id="currentUV"></p> -->
+            </div>
+            <!-- 5 day -->
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <!-- reference jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- reference Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js" async defer></script>
   </body>
 </html>
