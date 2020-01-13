@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px;
+}
+
+#showWeather {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 20px;
+  width: 600px;
+  height: 300px;
+}
+
+#getWeather {
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+}
