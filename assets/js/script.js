@@ -1,25 +1,28 @@
 $(document).ready(function(){
+  var cityArr = ['New York City', 'District of Columbia', 'Atlanta', 'Houston', 'Nashville', 'Birmingham'];
+  var today = moment().format('MMM Do, YYYY');
+  var currentCity = $('<h1>');
+  var currentDate = $('<h2>');
+  var currentIcon = $('<img>');
+  var currentIconURL = '';
+  var currentTemp = $('<p>');
+  var currentHumidity = $('<p>');
+  var currentWind = $('<p>');
+  var currentLat;
+  var currentLon;
+  var currentTimeCode;
   // on click, get city name
   $('#getWeather').on('click', function(e) {
     e.preventDefault();
     var city = $('#city').val();
     var apikey = 'a01adedec966523f1f3f3cd3a1d8d9b3';
 
-    var today = moment().format('MMM Do, YYYY');
-    var currentCity = $('<h1>');
-    var currentDate = $('<h2>');
-    var currentIcon = $('<img>');
-    var currentIconURL = '';
-    var currentTemp = $('<p>');
-    var currentHumidity = $('<p>');
-    var currentWind = $('<p>');
-    var currentLat;
-    var currentLon;
-    var currentTimeCode;
+
 
     // if there's a city typed in
     if( city !== "" ){
       getData(city);
+      addCity(city);
     }
     // get data from API
     function getData(city){
@@ -42,6 +45,7 @@ $(document).ready(function(){
         // }
 
         createEl(response)
+        getUVI(currentLat, currentLon);
 
         //get lat, lon and time code
         currentLat = response.coord.lat;
@@ -53,8 +57,6 @@ $(document).ready(function(){
         var description = response.weather[0].main;
         description.trim();
         $('.container').css('background-image', ("src(../images/" + description.toLowerCase() + ".jpg"));
-
-        getUVI();
       });
     }
 
@@ -82,7 +84,7 @@ $(document).ready(function(){
     }
 
     // get UV index
-    function getUVI() {
+    function getUVI(currentLat, currentLon) {
       $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/uvi',
         dataType: 'json',
@@ -93,10 +95,19 @@ $(document).ready(function(){
           lon: currentLon
         }
       }).then(function(response) {
+        // console.log(response);
         var currentUV = $('<p>');
         currentUV.text(response.value);
-        $('#current').append(currentTemp);
+        $('#current').append(currentUV);
       })
     }
   })//on click
+  //add city to array
+  function addCity(city) {
+    var cityList = $('#city-list');
+    cityArr.pop(city);
+    $.each(cityArr, function(index) {
+      cityArr[index] = $('<li>');
+    });
+  }
 })//doc get ready
