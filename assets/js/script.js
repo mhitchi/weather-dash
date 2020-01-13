@@ -44,13 +44,13 @@ $(document).ready(function(){
         //   results.append(img);
         // }
 
-        createEl(response)
-        getUVI(currentLat, currentLon);
-
         //get lat, lon and time code
         currentLat = response.coord.lat;
         currentLon = response.coord.lon;
         currentTimeCode = response.dt;
+
+        createEl(response)
+        getUVI(currentLat, currentLon);
 
         //TODO NOT WORKING
         //get description, get background image respectively
@@ -83,7 +83,7 @@ $(document).ready(function(){
       $('#current').append(currentWind);
     }
 
-    // get UV index
+    // TODO get UV index
     function getUVI(currentLat, currentLon) {
       $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/uvi',
