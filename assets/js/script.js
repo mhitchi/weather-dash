@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  var cityArr = ['New York City', 'District of Columbia', 'Atlanta', 'Houston', 'Nashville', 'Birmingham'];
+  // var cityArr = ['New York City', 'District of Columbia', 'Atlanta', 'Houston', 'Nashville', 'Birmingham'];
+  var cityArr = [];
   var today = moment().format('MMM Do, YYYY');
   var currentCity = $('<h1>');
   var currentDate = $('<h2>');
@@ -66,9 +67,9 @@ $(document).ready(function(){
       currentDate.text(today);
       currentIconURL = "http://openweathermap.org/img/w/" + (response.weather[0].icon) + ".png";
       currentIcon.attr('src', currentIconURL);
-      currentTemp.text((response.main.temp) + ' degrees Farenheit');
-      currentHumidity.text((response.main.humidity) + '%');
-      currentWind.text(response.wind.speed);
+      currentTemp.text("Temperature: " + (response.main.temp) + " degrees Farenheit");
+      currentHumidity.text("Humidity: " + (response.main.humidity) + "%");
+      currentWind.text("Wind speed: " + (response.wind.speed));
 
       updateDOM(currentCity, currentDate, currentIcon, currentIconURL, currentTemp, currentHumidity, currentWind);
     }
@@ -97,7 +98,7 @@ $(document).ready(function(){
       }).then(function(response) {
         // console.log(response);
         var currentUV = $('<p>');
-        currentUV.text(response.value);
+        currentUV.text("UV index: " + (response.value));
         $('#current').append(currentUV);
       })
     }
@@ -106,8 +107,21 @@ $(document).ready(function(){
   function addCity(city) {
     var cityList = $('#city-list');
     cityArr.pop(city);
-    $.each(cityArr, function(index) {
-      cityArr[index] = $('<li>');
-    });
+    // $.each(cityArr, function(index, value) {
+        // var listItem = $('<li>');
+        // listItem = cityArr[i]
+        // cityList.prepend(listItem);
+    // });
+    // for( var i = 0; i < cityArr.length; i++ ) {
+    //   var listItem = $('<li>');
+    //   listItem.text(cityArr[i]);
+    //   cityList.prepend(listItem);
+    // }
+    cityList.prepend($('<li>', {
+      text: city,
+      class: 'button',
+      type: 'button'
+    }));
+
   }
 })//doc get ready
