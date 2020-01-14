@@ -67,9 +67,10 @@ $(document).ready(function(){
   }
 
   function createEl(response){
+    //TODO clearing out all info except currentCity, CurrentIconURL
     $('#current').empty();
     // show current city, date, icon, temp, humidity, wind speed
-    currentCity.text($('#city').val());
+    currentCity.text(response.name);
     currentDate.text(today);
     currentIconURL = "http://openweathermap.org/img/w/" + (response.weather[0].icon) + ".png";
     currentIcon.attr('src', currentIconURL);
@@ -122,9 +123,8 @@ function addCity(city) {
     cityList.prepend(listItem);
 
     listItem.on('click', function() {
-      // $('#current').empty();
-      getData($(this).text());
-      console.log($(this).text());
+      getData(($(this).text()));
+      console.log(($(this).text()));
     });
   }
  }
