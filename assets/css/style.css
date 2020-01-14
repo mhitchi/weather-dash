@@ -1,14 +1,31 @@
 body {
   padding-top: 50px;
+  background-image: url(../images/clear.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #showWeather {
   border: 1px solid grey;
   border-radius: 5px;
-  margin-left: 20px;
   padding: 20px;
   width: 600px;
   height: 350px;
+  background-color: white;
+}
+
+.card-display {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 620px;
+}
+
+.card {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 120px;
+  height: 200px;
+  margin-left: 3px;
 }
 
 #getWeather {
@@ -16,7 +33,6 @@ body {
   border-radius: 5px;
   background-color: white;
 }
-
 
 #city-list {
   list-style-type: none;

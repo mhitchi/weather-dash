@@ -62,7 +62,7 @@ $(document).ready(function(){
       //get description, get background image respectively
       var description = response.weather[0].main;
       description.trim();
-      $('.container').css('background-image', ("src(../images/" + description.toLowerCase() + ".jpg"));
+      $('body').attr('style', ("background-image: url(\"assets/images/" + description.toLowerCase() + ".jpg\""));
     });
   }
 
