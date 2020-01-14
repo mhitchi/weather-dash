@@ -23,9 +23,8 @@ body {
   margin-top: 10px;
 }
 
-.button {
+.list-button {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 5px;
-
 }
