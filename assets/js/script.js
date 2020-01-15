@@ -153,10 +153,10 @@ function addCity(city) {
           var forecastTemp = $('<p>');
           var forecastHumidity = $('<p>');
 
-          var forecastIconURL = "http://openweathermap.org/img/w/" + (response.list[0].weather[0].icon) + ".png";
+          var forecastIconURL = "http://openweathermap.org/img/w/" + (response.list[i].weather[0].icon) + ".png";
           forecastIcon.attr('src', forecastIconURL);
-          forecastTemp.text('Temp: ' + response.list[0].main.temp);
-          forecastHumidity.text('Humidity: ' + response.list[0].main.humidity + '%');
+          forecastTemp.text('Temp: ' + response.list[i].main.temp);
+          forecastHumidity.text('Humidity: ' + response.list[i].main.humidity + '%');
 
           var card = $('.' + i);
           card.append(forecastDate);
