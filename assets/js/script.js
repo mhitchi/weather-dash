@@ -27,6 +27,7 @@ $(document).ready(function(){
     // if( city !== "" ){
       getData(city);
       addCity(city);
+      getForecast(city);
     // }
   })//on click
   // get data from API
@@ -41,7 +42,7 @@ $(document).ready(function(){
         units: 'imperial'
       }
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       // for(var i=0; i<response.data.length; i++) {
       //   var image = response.data[i]
       //   var img = $('<img>');
@@ -113,7 +114,7 @@ $(document).ready(function(){
 //add city to array
 function addCity(city) {
   cityArr.push(city);
-  console.log(cityArr);
+  // console.log(cityArr);
 
   for( var i = 0; i < cityArr.length; i++ ){
     var listItem = $('<li>');
@@ -124,8 +125,65 @@ function addCity(city) {
 
     listItem.on('click', function() {
       getData(($(this).text()));
-      console.log(($(this).text()));
+      // console.log(($(this).text()));
     });
   }
  }
+  function getForecast(city) {
+    $.ajax({
+      url: 'https://api.openweathermap.org/data/2.5/forecast',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        q: city,
+        appid: apikey,
+        units: 'imperial',
+        cnt: '5',
+      }
+    }).then(function(response) {
+      console.log(response);
+        for( var i = 0; i < response.list.length; i++ ) {
+          var theDate = moment();
+          theDate.add(i, 'days');
+          theDate.format('L');
+          var forecastDate = $('<h5>');
+          forecastDate.text(theDate);
+
+          var forecastIcon = $('<img>');
+          var forecastTemp = $('<p>');
+          var forecastHumidity = $('<p>');
+
+          var forecastIconURL = "http://openweathermap.org/img/w/" + (response.list[0].weather[0].icon) + ".png";
+          forecastIcon.attr('src', forecastIconURL);
+          forecastTemp.text('Temp: ' + response.list[0].main.temp);
+          forecastHumidity.text('Humidity: ' + response.list[0].main.humidity + '%');
+
+          var card = $('.' + i);
+          card.append(forecastDate);
+          card.append(forecastIcon);
+          card.append(forecastTemp);
+          card.append(forecastHumidity);
+
+          //remove GMT-0500 and time from date and 2020
+          var theTime = moment().format('HH:mm:ss');
+          var theYear = moment().format('YYYY');
+
+          scrapTime();
+
+          //TOTO this works, but throws XMLHHTPREQUEST Error blocked by CORS policy
+          //also removes background image
+          function scrapTime() {
+            $(':contains('+theTime+')').each(function(){
+              $(this).html($(this).html().split(theTime).join(""));
+            });
+            $(':contains("GMT-0500")').each(function(){
+              $(this).html($(this).html().split("GMT-0500").join(""));
+            });
+            $(':contains('+theYear+')').each(function(){
+              $(this).html($(this).html().split(theYear).join(""));
+            });
+        }
+        }
+      })
+  }
 })//doc get ready

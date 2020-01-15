@@ -14,7 +14,7 @@ body {
   background-color: white;
 }
 
-.card-display {
+.forecast {
   margin-top: 20px;
   margin-left: 20px;
   width: 620px;
@@ -43,4 +43,5 @@ body {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 5px;
+  background-color: white;
 }
