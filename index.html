@@ -11,19 +11,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- link fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- link google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:400,600&display=swap" rel="stylesheet">
   </head>
+
   <body>
-    <!-- jumbotron with img? -->
     <div class="container">
       <div class="row">
         <div class="col-4">
           <div class="row">
             <div class="col-12">
-              <!-- search field -->
-              <!-- <input id="city" type="text">
-              <button id="getWeather">Search</button> -->
               <!-- Search form -->
-              <form class="form-inline active-cyan-4">
+              <form class="form-inline active-cyan-4 search-bar">
                 <input id="city" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Enter a city"
                   aria-label="Search">
                 <button id="getWeather" class="fa fa-search" aria-hidden="true"></button>
@@ -40,12 +39,14 @@
               <!-- weather -->
               <div id="showWeather">
                 <!-- current -->
-                <div id="current"></div>
+                <div id="current">
+                  <h1 class="placeholder">Enter a city into the Search bar to get today's weather.</h1>
+                </div>
                 <!-- 5 day -->
               </div>
             </div>
           </div>
-          <div class="row forecast">
+          <div class="row forecast hidden">
             <div class="card 0"></div>
             <div class="card 1"></div>
             <div class="card 2"></div>

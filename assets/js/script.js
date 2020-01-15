@@ -1,7 +1,7 @@
 $(document).ready(function(){
   // var cityArr = ['New York City', 'District of Columbia', 'Atlanta', 'Houston', 'Nashville', 'Birmingham'];
   var cityArr = [];
-  var today = moment().format('MMM Do, YYYY');
+  var today = moment().format('MMM Do');
   var currentCity = $('<h1>');
   var currentDate = $('<h2>');
   var currentIcon = $('<img>');
@@ -32,6 +32,7 @@ $(document).ready(function(){
   })//on click
   // get data from API
   function getData(city){
+    $('#current').empty();
     $.ajax({
       url: 'https://api.openweathermap.org/data/2.5/weather',
       dataType: 'json',
@@ -61,9 +62,11 @@ $(document).ready(function(){
 
       //TODO NOT WORKING
       //get description, get background image respectively
-      var description = response.weather[0].main;
-      description.trim();
-      $('body').attr('style', ("background-image: url(\"assets/images/" + description.toLowerCase() + ".jpg\""));
+      // var description = response.weather[0].main;
+      // description.trim();
+      // $('body').attr('style', ("background-image: url(\"assets/images/" + description.toLowerCase() + ".jpg\""));
+
+      $('.forecast').removeClass('hidden');
     });
   }
 
@@ -73,9 +76,9 @@ $(document).ready(function(){
     // show current city, date, icon, temp, humidity, wind speed
     currentCity.text(response.name);
     currentDate.text(today);
-    currentIconURL = "http://openweathermap.org/img/w/" + (response.weather[0].icon) + ".png";
+    currentIconURL = "https://openweathermap.org/img/w/" + (response.weather[0].icon) + ".png";
     currentIcon.attr('src', currentIconURL);
-    currentTemp.text("Temperature: " + (response.main.temp) + " degrees Farenheit");
+    currentTemp.text("Temperature: " + (response.main.temp) + " º");
     currentHumidity.text("Humidity: " + (response.main.humidity) + "%");
     currentWind.text("Wind speed: " + (response.wind.speed));
 
@@ -119,6 +122,8 @@ function addCity(city) {
   for( var i = 0; i < cityArr.length; i++ ){
     var listItem = $('<li>');
     listItem.addClass('list-button');
+    // listItem.addClass('btn');
+    // listItem.addClass('btn-light');
     listItem.attr('type', 'button');
     listItem.text(cityArr[i]);
     cityList.prepend(listItem);
@@ -153,9 +158,10 @@ function addCity(city) {
           var forecastTemp = $('<p>');
           var forecastHumidity = $('<p>');
 
-          var forecastIconURL = "http://openweathermap.org/img/w/" + (response.list[i].weather[0].icon) + ".png";
+          var forecastIconURL = "https://openweathermap.org/img/w/" + (response.list[i].weather[0].icon) + ".png";
           forecastIcon.attr('src', forecastIconURL);
-          forecastTemp.text('Temp: ' + response.list[i].main.temp);
+          forecastIcon.attr('style', 'width:50px');
+          forecastTemp.text('Temp: ' + response.list[i].main.temp + " º");
           forecastHumidity.text('Humidity: ' + response.list[i].main.humidity + '%');
 
           var card = $('.' + i);

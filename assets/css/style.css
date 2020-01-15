@@ -5,43 +5,75 @@ body {
   background-repeat: no-repeat;
 }
 
+p {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+h1,h5 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: bold !important;
+}
+
 #showWeather {
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 20px;
-  width: 600px;
-  height: 350px;
+  margin-top: 50px;
+  padding: 45px;
+  /* height: 350px; */
   background-color: white;
+}
+
+.placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .forecast {
   margin-top: 20px;
   margin-left: 20px;
-  width: 620px;
 }
 
 .card {
-  border: 1px solid grey;
+  border: 2px solid white;
   border-radius: 5px;
-  width: 120px;
-  height: 200px;
+  /* width: 120px; */
+  height: 180px;
   margin-left: 3px;
+  padding: 15px;
+  display: none;
+  background-color: #daa520 !important;
+  color: white;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.search-bar {
+  margin-top: 50px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #getWeather {
   height: 30px;
+  border: 1px solid white;
   border-radius: 5px;
-  background-color: white;
+  background-color: #daa520;
 }
 
 #city-list {
   list-style-type: none;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-right: 20px;
 }
 
+/* NOT WORKING */
+/* TRIED ADDING !important */
+/* TRIED ADDING BOOTSTRAP BTN CLASSES, BUT NO CIGAR */
 .list-button {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 5px;
   background-color: white;
+  text-align: center;
 }
