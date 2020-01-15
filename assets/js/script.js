@@ -61,10 +61,10 @@ $(document).ready(function(){
       getUVI(currentLat, currentLon);
 
       //TODO NOT WORKING
-      //get description, get background image respectively
-      // var description = response.weather[0].main;
-      // description.trim();
-      // $('body').attr('style', ("background-image: url(\"assets/images/" + description.toLowerCase() + ".jpg\""));
+      // get description, get background image respectively
+      var description = response.weather[0].main;
+      description.trim();
+      $('body').attr('style', ("background-image: url(\"assets/images/" + description.toLowerCase() + ".jpg\""));
 
       $('.forecast').removeClass('hidden');
     });
